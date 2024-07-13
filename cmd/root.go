@@ -4,16 +4,19 @@ import (
 	"fmt"
 	"os"
 
+	template "acrylic125.com/templar/cmd/templatee"
+	"acrylic125.com/templar/cmd/use"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "templar",
 	Short: "Quickly setup a new project",
-	Long:  `Setup a new project with a single command.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Hello World!")
-	},
+}
+
+func init() {
+	rootCmd.AddCommand(template.RootCmd)
+	rootCmd.AddCommand(use.RootCmd)
 }
 
 func Execute() {
